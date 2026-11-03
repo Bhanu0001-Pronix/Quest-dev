@@ -1,0 +1,12 @@
+{
+  "stableId": "01a14b7d-9da1-79c2-8908-93bcdb3d19f0",
+  "name": "qd4_wf_case",
+  "slug": "qd4-wf-case",
+  "type": "cx_automation",
+  "description": "v4: builds the Case body with the deterministic summary and KPI metrics (qd_build_case) and writes it in the same call: PUT /cases/{caseId}, a missing or unknown id falls through to POST /cases. Returns status, caseId, outcome, requests.",
+  "entryAgent": null,
+  "slaMinutes": null,
+  "escalationRules": [],
+  "notificationRules": [],
+  "_exportedId": "01a17931-d87a-7aba-82b7-a43ae432f17d"
+}

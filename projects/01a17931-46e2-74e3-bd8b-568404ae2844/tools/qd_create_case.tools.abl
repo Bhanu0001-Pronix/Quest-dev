@@ -1,0 +1,33 @@
+TOOLS:
+  qd_create_case(sessionId: string, outcome: string, caseType: string, serviceType: string, stepReached: string, startedAt: string, accountNumber?: string, buildingNumber?: string, practiceName?: string, telephony?: object, summary?: string) -> object
+    description: "Creates the write-ahead Case record for this call with outcome IN_PROGRESS. Returns the record with its id, which the flow keeps as case_id."
+    type: http
+    params:
+      sessionId:
+        description: "The platform session id of the call."
+      outcome:
+        description: "IN_PROGRESS at creation."
+      caseType:
+        description: "in_progress at creation."
+      serviceType:
+        description: "Always Results."
+      stepReached:
+        description: "The flow step id reached when the Case was written."
+      startedAt:
+        description: "Call start time, ISO 8601 UTC."
+      accountNumber:
+        description: "The authenticated 8-digit account number."
+      buildingNumber:
+        description: "The account location building number."
+      practiceName:
+        description: "The practice name from the account record."
+      telephony:
+        description: "callerAni and five9CallId when the channel provided them."
+      summary:
+        description: "The deterministic 3C summary text."
+    endpoint: "{{env.QD_API_BASE_URL}}/cases"
+    method: POST
+    idempotency_header: Idempotency-Key
+    headers:
+      Content-Type: application/json
+    timeout: 4000

@@ -1,0 +1,22 @@
+{
+  "name": "Social Security Number",
+  "description": "",
+  "piiType": "ssn",
+  "redaction": {
+    "type": "predefined",
+    "label": "[REDACTED_SSN]"
+  },
+  "consumerAccess": [
+    {
+      "consumer": "user",
+      "renderMode": "original"
+    },
+    {
+      "consumer": "tool_input",
+      "renderMode": "original"
+    }
+  ],
+  "defaultRenderMode": "tokenized",
+  "enabled": true,
+  "builtinOverride": true
+}

@@ -1,0 +1,100 @@
+{
+  "version": "draft",
+  "state": "active",
+  "environment": null,
+  "source_hash": "6e05845cd7af75814cbad5e1b9922dc35dcf84fc686bc308eb50d2eca1441022",
+  "changelog": null,
+  "triggers": [
+    {
+      "_exportedId": "01a17931-d88b-7975-a60e-f06e15b95fc6",
+      "triggerName": "webhook",
+      "type": "webhook",
+      "config": {},
+      "environment": null
+    }
+  ],
+  "published_at": null,
+  "definition": {
+    "nodes": [
+      {
+        "id": "start-node",
+        "nodeType": "start",
+        "name": "Start",
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "config": {
+          "inputVariables": [
+            {
+              "name": "callerName",
+              "type": "string",
+              "required": true,
+              "description": "The caller's first and last name as said."
+            }
+          ]
+        }
+      },
+      {
+        "id": "echo",
+        "nodeType": "function",
+        "name": "echo",
+        "position": {
+          "x": 300,
+          "y": 0
+        },
+        "config": {
+          "language": "javascript",
+          "mode": "inline",
+          "code": "const input = (context.steps && context.steps.start && context.steps.start.output) || (context.trigger && context.trigger.payload) || {};\ncontext.qd_result = { status: 'OK', callerName: String(input.callerName == null ? '' : input.callerName).trim() };"
+        }
+      },
+      {
+        "id": "end-node",
+        "nodeType": "end",
+        "name": "end",
+        "position": {
+          "x": 600,
+          "y": 0
+        },
+        "config": {
+          "outputMapping": {
+            "result": "{{context.qd_result}}"
+          }
+        }
+      }
+    ],
+    "edges": [
+      {
+        "id": "e1",
+        "source": "start-node",
+        "sourceHandle": "on_success",
+        "target": "echo"
+      },
+      {
+        "id": "e2",
+        "source": "echo",
+        "sourceHandle": "on_success",
+        "target": "end-node"
+      }
+    ],
+    "steps": [],
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "callerName": {
+          "type": "string",
+          "description": "The caller's first and last name as said."
+        }
+      },
+      "required": [
+        "callerName"
+      ]
+    },
+    "outputSchema": null,
+    "entryAgent": null,
+    "slaMinutes": null,
+    "escalationRules": [],
+    "notificationRules": []
+  }
+}

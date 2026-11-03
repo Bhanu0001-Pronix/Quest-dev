@@ -1,0 +1,12 @@
+{
+  "stableId": "01a14ab8-9f8d-71b8-b91c-b5f1456bd0b5",
+  "name": "qd4_wf_caller_name",
+  "slug": "qd4-wf-caller-name",
+  "type": "cx_automation",
+  "description": "Records the caller's own first and last name for the call record. Returns status only.",
+  "entryAgent": null,
+  "slaMinutes": null,
+  "escalationRules": [],
+  "notificationRules": [],
+  "_exportedId": "01a17931-d87a-70e7-870d-df1fa01c58b5"
+}

@@ -1,0 +1,13 @@
+TOOLS:
+  qd4_case(state: object, event: string, caseId?: string) -> object
+    description: "Builds and writes the Case record for the call state and event. Returns status OK with the Case id, outcome and requests."
+    type: workflow
+    params:
+      state:
+        description: "The call state: session_id, account, caller_*, requests[], current_request, transfer_reason, policy, timestamps, metrics."
+        schema: "{\"type\":\"object\",\"description\":\"The call state: session_id, account, caller_*, requests[], current_request, transfer_reason, policy, timestamps, metrics.\"}"
+      event:
+        description: "in_progress, delivered, pending, transfer, abandoned or no_action."
+      caseId:
+        description: "The Case id to update; empty to create the write-ahead record."
+    workflow_id: "01a17931-d87a-7aba-82b7-a43ae432f17d"

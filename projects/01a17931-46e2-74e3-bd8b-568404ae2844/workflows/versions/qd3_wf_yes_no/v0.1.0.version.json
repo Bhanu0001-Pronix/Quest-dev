@@ -1,0 +1,94 @@
+{
+  "version": "v0.1.0",
+  "state": "active",
+  "environment": null,
+  "source_hash": "8d00b706706debdb",
+  "compile_hash": null,
+  "changelog": "Auto-created for deployment",
+  "triggers": [],
+  "trigger_snapshot": null,
+  "tool_snapshot": null,
+  "published_at": "2026-10-30T09:41:47.632Z",
+  "published_by": "019faded-90d5-7057-a173-be33ccbbefbd",
+  "workflow_name_at_publish": "qd3_wf_yes_no",
+  "workflow_description_at_publish": "Records the caller's answer to the open yes or no question. Returns status only.",
+  "definition": {
+    "nodes": [
+      {
+        "id": "start-node",
+        "nodeType": "start",
+        "name": "Start",
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "config": {
+          "inputVariables": [
+            {
+              "name": "answer",
+              "type": "string",
+              "required": true,
+              "description": "yes, no or unclear."
+            }
+          ]
+        }
+      },
+      {
+        "id": "echo",
+        "nodeType": "function",
+        "name": "echo",
+        "position": {
+          "x": 300,
+          "y": 0
+        },
+        "config": {
+          "language": "javascript",
+          "mode": "inline",
+          "code": "const input = (context.steps && context.steps.start && context.steps.start.output) || (context.trigger && context.trigger.payload) || {};\ncontext.qd_result = { status: 'OK', answer: String(input.answer == null ? '' : input.answer).trim() };"
+        }
+      },
+      {
+        "id": "end-node",
+        "nodeType": "end",
+        "name": "end",
+        "position": {
+          "x": 600,
+          "y": 0
+        },
+        "config": {
+          "outputMapping": {
+            "result": "{{context.qd_result}}"
+          }
+        }
+      }
+    ],
+    "edges": [
+      {
+        "id": "e1",
+        "source": "start-node",
+        "sourceHandle": "on_success",
+        "target": "echo"
+      },
+      {
+        "id": "e2",
+        "source": "echo",
+        "sourceHandle": "on_success",
+        "target": "end-node"
+      }
+    ],
+    "variableNamespaceIds": [],
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "answer": {
+          "type": "string",
+          "description": "yes, no or unclear."
+        }
+      },
+      "required": [
+        "answer"
+      ]
+    },
+    "outputSchema": null
+  }
+}

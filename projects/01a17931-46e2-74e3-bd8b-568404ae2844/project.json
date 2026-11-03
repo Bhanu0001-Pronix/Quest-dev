@@ -1,0 +1,105 @@
+{
+  "format_version": "2.0",
+  "artifact_scope": "project",
+  "name": "Quest Dev (Deepgram)",
+  "slug": "quest-dev-deepgram",
+  "description": null,
+  "abl_version": "1.0",
+  "exported_by": "019e88a7-d1cb-7809-ae24-edb82a1e7be4",
+  "entry_agent": "Quest_Results_Agent",
+  "dsl_format": "legacy",
+  "layers_included": [
+    "core",
+    "connections",
+    "prompts",
+    "guardrails",
+    "forms",
+    "wsdl",
+    "workflows"
+  ],
+  "agents": {
+    "Quest_Results_Agent": {
+      "path": "agents/quest_results_agent.agent.abl",
+      "owner": null,
+      "ownerTeam": null,
+      "description": null,
+      "version": null
+    }
+  },
+  "tools": {
+    "qd3_note": {
+      "path": "tools/qd3_note.tools.abl",
+      "owner": null
+    },
+    "qd3_yes_no": {
+      "path": "tools/qd3_yes_no.tools.abl",
+      "owner": null
+    },
+    "qd4_auth": {
+      "path": "tools/qd4_auth.tools.abl",
+      "owner": null
+    },
+    "qd4_caller_name": {
+      "path": "tools/qd4_caller_name.tools.abl",
+      "owner": null
+    },
+    "qd4_case": {
+      "path": "tools/qd4_case.tools.abl",
+      "owner": null
+    },
+    "qd4_destination": {
+      "path": "tools/qd4_destination.tools.abl",
+      "owner": null
+    },
+    "qd4_patient": {
+      "path": "tools/qd4_patient.tools.abl",
+      "owner": null
+    },
+    "qd4_send": {
+      "path": "tools/qd4_send.tools.abl",
+      "owner": null
+    },
+    "qd4_update_case": {
+      "path": "tools/qd4_update_case.tools.abl",
+      "owner": null
+    },
+    "qd_authenticate_provider": {
+      "path": "tools/qd_authenticate_provider.tools.abl",
+      "owner": null
+    },
+    "qd_create_case": {
+      "path": "tools/qd_create_case.tools.abl",
+      "owner": null
+    },
+    "qd_lookup_patient_records": {
+      "path": "tools/qd_lookup_patient_records.tools.abl",
+      "owner": null
+    },
+    "qd_wf_classify_title": {
+      "path": "tools/qd_wf_classify_title.tools.abl",
+      "owner": null
+    }
+  },
+  "behavior_profiles": {},
+  "strict_validation": false,
+  "metadata": {
+    "entity_counts": {
+      "agents": 1,
+      "tools": 13,
+      "behavior_profiles": 0,
+      "core": 14,
+      "connections": 0,
+      "prompts": 0,
+      "guardrails": 6,
+      "forms": 0,
+      "wsdl": 0,
+      "workflows": 8
+    },
+    "required_env_vars": [
+      "QD_API_BASE_URL"
+    ],
+    "required_config_vars": [],
+    "required_connectors": [],
+    "required_mcp_servers": []
+  }
+}

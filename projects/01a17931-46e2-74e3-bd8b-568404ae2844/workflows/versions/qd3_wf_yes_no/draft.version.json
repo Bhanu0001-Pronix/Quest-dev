@@ -1,0 +1,100 @@
+{
+  "version": "draft",
+  "state": "active",
+  "environment": null,
+  "source_hash": "dd8137b2c4f3759cf6943a4d743c603ce2b64b8b6d54e5774ccaaca0b384d65b",
+  "changelog": null,
+  "triggers": [
+    {
+      "_exportedId": "01a17931-d88b-76b4-9a48-12d7c994b31a",
+      "triggerName": "webhook",
+      "type": "webhook",
+      "config": {},
+      "environment": null
+    }
+  ],
+  "published_at": null,
+  "definition": {
+    "nodes": [
+      {
+        "id": "start-node",
+        "nodeType": "start",
+        "name": "Start",
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "config": {
+          "inputVariables": [
+            {
+              "name": "answer",
+              "type": "string",
+              "required": true,
+              "description": "yes, no or unclear."
+            }
+          ]
+        }
+      },
+      {
+        "id": "echo",
+        "nodeType": "function",
+        "name": "echo",
+        "position": {
+          "x": 300,
+          "y": 0
+        },
+        "config": {
+          "language": "javascript",
+          "mode": "inline",
+          "code": "const input = (context.steps && context.steps.start && context.steps.start.output) || (context.trigger && context.trigger.payload) || {};\ncontext.qd_result = { status: 'OK', answer: String(input.answer == null ? '' : input.answer).trim() };"
+        }
+      },
+      {
+        "id": "end-node",
+        "nodeType": "end",
+        "name": "end",
+        "position": {
+          "x": 600,
+          "y": 0
+        },
+        "config": {
+          "outputMapping": {
+            "result": "{{context.qd_result}}"
+          }
+        }
+      }
+    ],
+    "edges": [
+      {
+        "id": "e1",
+        "source": "start-node",
+        "sourceHandle": "on_success",
+        "target": "echo"
+      },
+      {
+        "id": "e2",
+        "source": "echo",
+        "sourceHandle": "on_success",
+        "target": "end-node"
+      }
+    ],
+    "steps": [],
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "answer": {
+          "type": "string",
+          "description": "yes, no or unclear."
+        }
+      },
+      "required": [
+        "answer"
+      ]
+    },
+    "outputSchema": null,
+    "entryAgent": null,
+    "slaMinutes": null,
+    "escalationRules": [],
+    "notificationRules": []
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "stableId": "01a148a8-8c25-7d35-ae3c-e20bd7753ded",
+  "name": "qd3_wf_note",
+  "slug": "qd3-wf-note",
+  "type": "cx_automation",
+  "description": "Records the caller's choice or request in a few words, as instructed. Returns status only.",
+  "entryAgent": null,
+  "slaMinutes": null,
+  "escalationRules": [],
+  "notificationRules": [],
+  "_exportedId": "01a17931-d879-74cf-a477-daed71d313d9"
+}

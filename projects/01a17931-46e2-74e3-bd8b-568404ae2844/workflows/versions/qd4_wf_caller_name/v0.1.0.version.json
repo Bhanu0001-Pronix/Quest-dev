@@ -1,0 +1,94 @@
+{
+  "version": "v0.1.0",
+  "state": "active",
+  "environment": null,
+  "source_hash": "6648f25bdec6b4ce",
+  "compile_hash": null,
+  "changelog": "Auto-created for deployment",
+  "triggers": [],
+  "trigger_snapshot": null,
+  "tool_snapshot": null,
+  "published_at": "2026-10-30T09:41:47.691Z",
+  "published_by": "019faded-90d5-7057-a173-be33ccbbefbd",
+  "workflow_name_at_publish": "qd4_wf_caller_name",
+  "workflow_description_at_publish": "Records the caller's own first and last name for the call record. Returns status only.",
+  "definition": {
+    "nodes": [
+      {
+        "id": "start-node",
+        "nodeType": "start",
+        "name": "Start",
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "config": {
+          "inputVariables": [
+            {
+              "name": "callerName",
+              "type": "string",
+              "required": true,
+              "description": "The caller's first and last name as said."
+            }
+          ]
+        }
+      },
+      {
+        "id": "echo",
+        "nodeType": "function",
+        "name": "echo",
+        "position": {
+          "x": 300,
+          "y": 0
+        },
+        "config": {
+          "language": "javascript",
+          "mode": "inline",
+          "code": "const input = (context.steps && context.steps.start && context.steps.start.output) || (context.trigger && context.trigger.payload) || {};\ncontext.qd_result = { status: 'OK', callerName: String(input.callerName == null ? '' : input.callerName).trim() };"
+        }
+      },
+      {
+        "id": "end-node",
+        "nodeType": "end",
+        "name": "end",
+        "position": {
+          "x": 600,
+          "y": 0
+        },
+        "config": {
+          "outputMapping": {
+            "result": "{{context.qd_result}}"
+          }
+        }
+      }
+    ],
+    "edges": [
+      {
+        "id": "e1",
+        "source": "start-node",
+        "sourceHandle": "on_success",
+        "target": "echo"
+      },
+      {
+        "id": "e2",
+        "source": "echo",
+        "sourceHandle": "on_success",
+        "target": "end-node"
+      }
+    ],
+    "variableNamespaceIds": [],
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "callerName": {
+          "type": "string",
+          "description": "The caller's first and last name as said."
+        }
+      },
+      "required": [
+        "callerName"
+      ]
+    },
+    "outputSchema": null
+  }
+}

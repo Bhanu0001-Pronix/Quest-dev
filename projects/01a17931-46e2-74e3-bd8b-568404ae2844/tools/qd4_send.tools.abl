@@ -1,0 +1,32 @@
+TOOLS:
+  qd4_send(sessionId: string, idempotencyKey: string, channel: string, trigger: string, destination: string, accession: string, accountNumber: string, buildingNumber?: string, patientId: string, testName?: string, status: string) -> object
+    description: "Queues one test result for delivery to a fax number or email address already on file for the authenticated account (trigger now), or schedules automatic delivery of a pending result when it is final (trigger on_final). Creates a delivery record and returns it with its id. v4 only."
+    type: http
+    params:
+      sessionId:
+        description: "The platform session id of the call."
+      idempotencyKey:
+        description: "The accession number; the same key never sends twice in a call."
+      channel:
+        description: "fax or email."
+      trigger:
+        description: "now for a ready result, on_final for a pending one."
+      destination:
+        description: "The fax number or email address copied from the account record, never from the caller."
+      accession:
+        description: "The accession number selected by the caller."
+      accountNumber:
+        description: "The authenticated 8-digit account number."
+      buildingNumber:
+        description: "The account location building number."
+      patientId:
+        description: "The patient id from the lookup record."
+      testName:
+        description: "The test name of the selected accession."
+      status:
+        description: "queued for a ready result, scheduled for a pending one."
+    endpoint: "{{env.QD_API_BASE_URL}}/deliveries"
+    method: POST
+    idempotency_header: Idempotency-Key
+    headers:
+      Content-Type: application/json

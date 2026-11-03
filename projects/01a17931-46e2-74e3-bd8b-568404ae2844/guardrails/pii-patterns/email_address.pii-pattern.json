@@ -1,0 +1,22 @@
+{
+  "name": "Email Address",
+  "description": "",
+  "piiType": "email",
+  "redaction": {
+    "type": "predefined",
+    "label": "[REDACTED_EMAIL]"
+  },
+  "consumerAccess": [
+    {
+      "consumer": "user",
+      "renderMode": "original"
+    },
+    {
+      "consumer": "tool_input",
+      "renderMode": "original"
+    }
+  ],
+  "defaultRenderMode": "tokenized",
+  "enabled": true,
+  "builtinOverride": true
+}

@@ -1,0 +1,17 @@
+TOOLS:
+  qd4_auth(accountSaid?: string, buildingSaid?: string, phoneSaid?: string, rawWords?: string, policy?: object) -> object
+    description: "Checks the Quest account number the caller said and resolves it to one location. Returns status RESOLVED with the practice name; NEEDS_BUILDING, which means ask which building number they are calling from and call again with it; INVALID or UNPARSED with heardLine, which means the number was not understood; or NOT_FOUND, HOUSE_ACCOUNT, UNRESOLVED."
+    type: workflow
+    params:
+      accountSaid:
+        description: "The account number exactly as the caller said it, digits or words; empty when they did not say one."
+      buildingSaid:
+        description: "The building number when the account has several locations, as the caller said it."
+      phoneSaid:
+        description: "The phone number on the account when the building number did not match, as the caller said it."
+      rawWords:
+        description: "The caller's last words, supplied automatically."
+      policy:
+        description: "The POLICY block, supplied automatically."
+        schema: "{\"type\":\"object\",\"description\":\"The POLICY block, supplied automatically.\"}"
+    workflow_id: "01a17931-d87a-7e81-b484-17bc13d73362"

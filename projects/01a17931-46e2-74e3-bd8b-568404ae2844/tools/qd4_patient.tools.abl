@@ -1,0 +1,32 @@
+TOOLS:
+  qd4_patient(nameSaid?: string, dobSaid?: string, hintSaid?: string, identifierSaid?: string, choiceSaid?: string, alsoSaid?: string, rawWords?: string, today?: string, acct8?: string, policy?: object, held?: object, acctRef?: string) -> object
+    description: "Finds the patient's results. Call it with whatever the caller just gave: the patient's name (nameSaid), date of birth (dobSaid), the test or collection date they mention (hintSaid), the answer to an identifier question (identifierSaid), their answer when results are offered (choiceSaid), or a second test or date they want afterwards (alsoSaid). Returns status NEED_NAME, NEED_DOB, NOT_FOUND, FOUND, NEED_ID, ID_FAILED, OFFER_ONE, OFFER, SELECTED, NO_MATCH_DATE, TOO_MANY, TOO_MANY_FINAL, NONE, OUT_OF_WINDOW, SENSITIVE or ALL_RESTRICTED, with say (words to use) and ask (what to ask next)."
+    type: workflow
+    params:
+      nameSaid:
+        description: "The patient's name exactly as the caller said it, including any spelled letters; empty if not said this turn."
+      dobSaid:
+        description: "The patient's date of birth exactly as said, or the correction to it; empty if not said this turn."
+      hintSaid:
+        description: "The test name and/or collection date they mentioned, in their words; empty if none."
+      identifierSaid:
+        description: "Their answer to an identifier question (collection date, phone, address, state or email), as said; empty otherwise."
+      choiceSaid:
+        description: "Their answer when results were offered: yes, or which one they mean, as said; empty otherwise."
+      alsoSaid:
+        description: "A second test or date they want after this one, in their words; empty if none."
+      rawWords:
+        description: "The caller's last words, supplied automatically."
+      today:
+        description: "Today as YYYY-MM-DD, supplied automatically."
+      acct8:
+        description: "The authenticated account, supplied automatically."
+      policy:
+        description: "The POLICY block, supplied automatically."
+        schema: "{\"type\":\"object\",\"description\":\"The POLICY block, supplied automatically.\"}"
+      held:
+        description: "The patient state held so far, supplied automatically."
+        schema: "{\"type\":\"object\",\"description\":\"The patient state held so far, supplied automatically.\"}"
+      acctRef:
+        description: "A reference to the authenticated account, supplied automatically."
+    workflow_id: 01a17931-d87a-774a-9417-ee5a17f036aa

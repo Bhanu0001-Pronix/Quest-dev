@@ -1,0 +1,15 @@
+TOOLS:
+  qd_authenticate_provider(questAccountNumber: string) -> object
+    description: "Looks up the Quest provider account records for an 8-digit account number. Returns every location record whose account number contains the digits; the flow keeps only exact matches."
+    type: http
+    params:
+      questAccountNumber:
+        description: "The caller's Quest account number as 8 digits (4-digit accounts zero-padded)."
+    endpoint: "{{env.QD_API_BASE_URL}}/providers?questAccountNumber={{questAccountNumber}}"
+    method: GET
+    timeout: 2500
+    retry: 1
+    retry_delay: 300
+    circuit_breaker:
+      threshold: 5
+      reset_ms: 30000

@@ -1,0 +1,24 @@
+{
+  "name": "Quest Account Number",
+  "description": "Quest client account number: 8 digits, 4 + 4 digits, 8 spaced single digits, or 8 spoken digit words. Dates (YYYY-MM-DD) are not matched.",
+  "piiType": "quest_account_number",
+  "regex": "\\b(?:\\d{8}|\\d{4}(?:, ?| |-)\\d{4}|\\d(?:,? \\d){7})\\b|\\b(?:[Zz]ero|[Oo]h|[Oo]ne|[Tt]wo|[Tt]hree|[Ff]our|[Ff]ive|[Ss]ix|[Ss]even|[Ee]ight|[Nn]ine)(?:,? (?:[Zz]ero|[Oo]h|[Oo]ne|[Tt]wo|[Tt]hree|[Ff]our|[Ff]ive|[Ss]ix|[Ss]even|[Ee]ight|[Nn]ine)){7}\\b",
+  "redaction": {
+    "type": "predefined",
+    "label": "[REDACTED_ACCOUNT_NUMBER]"
+  },
+  "consumerAccess": [
+    {
+      "consumer": "user",
+      "renderMode": "original"
+    },
+    {
+      "consumer": "tool_input",
+      "renderMode": "original"
+    }
+  ],
+  "defaultRenderMode": "tokenized",
+  "enabled": true,
+  "builtinOverride": false,
+  "detectionMethod": "regex-custom"
+}

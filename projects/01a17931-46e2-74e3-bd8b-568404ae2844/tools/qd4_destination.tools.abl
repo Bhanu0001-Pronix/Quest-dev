@@ -1,0 +1,22 @@
+TOOLS:
+  qd4_destination(channelSaid?: string, emailSaid?: string, acct8?: string, buildingNumber?: string, policy?: object, dheld?: object, acctRef?: string) -> object
+    description: "Arranges where the results go. Call it with the channel the caller named (channelSaid: fax, email, the other fax, a number not on file, or their EHR; empty to learn what is on file) and any email address they said (emailSaid). Returns status ASK_CHANNEL, FAX_OFFER, NO_FAX, ASK_EMAIL, NO_EMAIL, EMAIL_MATCH, EMAIL_MISS, EMAIL_MISS_FINAL, ONLY_ON_FILE, EHR or NO_DESTINATION with say (the words to use) and ask (what to ask next)."
+    type: workflow
+    params:
+      channelSaid:
+        description: "The channel or destination the caller named, in their words; empty to learn what is on file."
+      emailSaid:
+        description: "The email address exactly as the caller said it, with at and dot; empty otherwise."
+      acct8:
+        description: "The authenticated account number, supplied automatically."
+      buildingNumber:
+        description: "The account building number, supplied automatically."
+      policy:
+        description: "The POLICY block, supplied automatically."
+        schema: "{\"type\":\"object\",\"description\":\"The POLICY block, supplied automatically.\"}"
+      dheld:
+        description: "The delivery state held so far, supplied automatically."
+        schema: "{\"type\":\"object\",\"description\":\"The delivery state held so far, supplied automatically.\"}"
+      acctRef:
+        description: "A reference to the authenticated account, supplied automatically."
+    workflow_id: 01a17931-d87a-7220-91c5-72ef6e3e3b40

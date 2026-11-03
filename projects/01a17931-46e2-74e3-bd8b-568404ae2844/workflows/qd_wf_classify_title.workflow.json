@@ -1,0 +1,12 @@
+{
+  "stableId": "01a12b65-20fe-7127-a60f-be8b2148c8bc",
+  "name": "qd_wf_classify_title",
+  "slug": "qd-wf-classify-title",
+  "type": "cx_automation",
+  "description": "Classifies the caller job title against the Quest authorized and unauthorized lists. Returns status AUTHORIZED, UNAUTHORIZED or UNKNOWN with the matched phrase and category.",
+  "entryAgent": null,
+  "slaMinutes": null,
+  "escalationRules": [],
+  "notificationRules": [],
+  "_exportedId": "01a17931-d87a-71b1-8c58-560f0e6c6163"
+}

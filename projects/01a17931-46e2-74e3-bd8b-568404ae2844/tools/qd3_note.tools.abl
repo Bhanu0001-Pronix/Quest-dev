@@ -1,0 +1,8 @@
+TOOLS:
+  qd3_note(choice: string) -> object
+    description: "Records the caller's choice or request in a few words, as instructed. Returns status only."
+    type: workflow
+    params:
+      choice:
+        description: "The choice or request in a few words, as instructed: an offered test name or date, a channel, or one of agent, bye, hold, why, repeat, other, none, another, done, or also followed by a second request."
+    workflow_id: "01a17931-d879-74cf-a477-daed71d313d9"

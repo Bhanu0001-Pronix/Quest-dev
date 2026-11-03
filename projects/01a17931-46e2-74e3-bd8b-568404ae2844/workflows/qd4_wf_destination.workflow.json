@@ -1,0 +1,12 @@
+{
+  "stableId": "01a14b7d-a639-7986-8d78-cfe1fa065f93",
+  "name": "qd4_wf_destination",
+  "slug": "qd4-wf-destination",
+  "type": "cx_automation",
+  "description": "v4: the one delivery-phase tool. Decides the fax or email destination from the channel named and any email said, against the bound account record. Returns one status plus say and ask; the destination itself is for the deterministic send.",
+  "entryAgent": null,
+  "slaMinutes": null,
+  "escalationRules": [],
+  "notificationRules": [],
+  "_exportedId": "01a17931-d87a-7220-91c5-72ef6e3e3b40"
+}

@@ -1,0 +1,12 @@
+{
+  "stableId": "01a14b7d-9326-7cdb-aacf-cb4c4361b8f0",
+  "name": "qd4_wf_auth_raw",
+  "slug": "qd4-wf-auth-raw",
+  "type": "cx_automation",
+  "description": "v4: parses the account number from the words said (typed or raw) and authenticates it in one call. Status RESOLVED, NEEDS_BUILDING, UNRESOLVED, HOUSE_ACCOUNT, NOT_FOUND, INVALID or UNPARSED; practiceName and heardLine at the root.",
+  "entryAgent": null,
+  "slaMinutes": null,
+  "escalationRules": [],
+  "notificationRules": [],
+  "_exportedId": "01a17931-d87a-7e81-b484-17bc13d73362"
+}

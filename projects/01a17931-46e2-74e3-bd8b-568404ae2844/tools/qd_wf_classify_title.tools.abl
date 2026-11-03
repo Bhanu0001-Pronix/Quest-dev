@@ -1,0 +1,8 @@
+TOOLS:
+  qd_wf_classify_title(titleText: string) -> object
+    description: "Classifies the caller job title against the Quest authorized and unauthorized lists. Returns status AUTHORIZED, UNAUTHORIZED or UNKNOWN with the matched phrase and category."
+    type: workflow
+    params:
+      titleText:
+        description: "The job title exactly as the caller said it."
+    workflow_id: "01a17931-d87a-71b1-8c58-560f0e6c6163"

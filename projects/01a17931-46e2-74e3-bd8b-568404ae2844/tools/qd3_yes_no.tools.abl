@@ -1,0 +1,8 @@
+TOOLS:
+  qd3_yes_no(answer: string) -> object
+    description: "Records the caller's answer to the open yes or no question. Returns status only."
+    type: workflow
+    params:
+      answer:
+        description: "yes, no or unclear."
+    workflow_id: "01a17931-d87a-73b1-ae1d-a40016b3dda6"

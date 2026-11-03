@@ -1,0 +1,48 @@
+TOOLS:
+  qd4_update_case(caseId: string, sessionId: string, outcome: string, caseType: string, serviceReason?: string, transferReasonCode?: string, transferReason?: string, stepReached: string, endedAt?: string, accountNumber?: string, buildingNumber?: string, practiceName?: string, callerName?: string, jobTitle?: string, telephony?: object, firstRequest?: object, requests?: array, summary?: string, metrics?: object) -> object
+    description: "Updates the Case record for this call with the outcome, request details, the deterministic summary and the KPI metrics in one write. v4 only."
+    type: http
+    params:
+      caseId:
+        description: "The Case record id returned at creation."
+      sessionId:
+        description: "The platform session id of the call."
+      outcome:
+        description: "IN_PROGRESS, DELIVERED, PENDING_SCHEDULED, TRANSFERRED, ABANDONED or ENDED_NO_ACTION."
+      caseType:
+        description: "in_progress, delivered, pending, transfer, abandoned or no_action."
+      serviceReason:
+        description: "Fax, Email, Pending or Not Found."
+      transferReasonCode:
+        description: "The internal transfer reason code, when transferred."
+      transferReason:
+        description: "Short fixed reason text with no patient data."
+      stepReached:
+        description: "The flow step id reached when the Case was written."
+      endedAt:
+        description: "Call end time, ISO 8601 UTC, when terminal."
+      accountNumber:
+        description: "The authenticated 8-digit account number."
+      buildingNumber:
+        description: "The account location building number."
+      practiceName:
+        description: "The practice name from the account record."
+      callerName:
+        description: "The caller's first and last name."
+      jobTitle:
+        description: "The caller's job title as said."
+      telephony:
+        description: "callerAni, five9CallId and, in simulate mode, debugHeaders the hub would send."
+      firstRequest:
+        description: "patientName, patientDob, testName, accession, deliveryChannel, deliveryDestination (masked) and resultStatus of the first request."
+      requests:
+        description: "One entry per patient handled, same shape as firstRequest."
+      summary:
+        description: "The deterministic 3C summary text."
+      metrics:
+        description: "stageReached, outcome, reasonCode, reasonClass, dataAvailable, modelTurns, apiLatencyMs, durationSec (no PHI)."
+    endpoint: "{{env.QD_API_BASE_URL}}/cases/{{caseId}}"
+    method: PUT
+    idempotency_header: Idempotency-Key
+    headers:
+      Content-Type: application/json

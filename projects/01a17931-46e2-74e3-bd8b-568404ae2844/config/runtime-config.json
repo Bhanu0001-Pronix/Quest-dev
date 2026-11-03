@@ -1,0 +1,387 @@
+{
+  "extraction": {
+    "strategy": "auto",
+    "correction_detection": "strategy",
+    "pipeline_v2_enabled": true,
+    "mode": "auto",
+    "confidence_threshold": 0.5,
+    "include_confidence": true
+  },
+  "multi_intent": {
+    "enabled": true,
+    "strategy": "primary_queue",
+    "unknown_relationship_strategy": "parallel",
+    "max_intents": 3,
+    "confidence_threshold": 0.6,
+    "queue_max_age_ms": 600000,
+    "advance_on_primary_response": true
+  },
+  "inference": {
+    "confidence": 0.8,
+    "confirm": true,
+    "model_tier": "fast",
+    "max_fields_per_pass": 3
+  },
+  "conversion": {
+    "currency_mode": "static"
+  },
+  "pii_redaction": {
+    "enabled": true,
+    "redact_input": true,
+    "redact_output": true,
+    "custom_dimensions": {
+      "default_policy": "protect",
+      "rules": []
+    },
+    "tier": "advanced",
+    "latency_budget_ms": 200,
+    "confidence_threshold": 0.5,
+    "enabled_recognizer_packs": [
+      "core"
+    ],
+    "secret_scrub_exempt_fields": []
+  },
+  "lookup_tables": [],
+  "tool_call_policy": {
+    "max_boundary_call_depth": 3,
+    "max_boundary_calls_per_turn": 8,
+    "boundary_call_enabled": true
+  },
+  "streaming_safety": {
+    "mode": "legacy_passthrough"
+  },
+  "channel_recovery": {
+    "schemaVersion": 1,
+    "status": "published",
+    "revision": 1,
+    "defaultLocale": "en-US",
+    "channels": {},
+    "policy": {
+      "parentDeadlineMs": 30000,
+      "acknowledgementDelayMs": 1200,
+      "retryBackoffMs": 250,
+      "maxRetries": 1,
+      "preserveContext": true,
+      "progressEnabled": true,
+      "fallbackMessageKey": "recovery.model_unavailable",
+      "fallback": {
+        "maxAttempts": 1,
+        "preserveContext": true,
+        "requireSameToolContract": true,
+        "requireSameSafetyPolicy": true
+      },
+      "hedge": {
+        "enabled": false,
+        "startAfterMs": 1200,
+        "maxParallel": 2,
+        "eligibleOperations": [],
+        "cancelLosers": true,
+        "maxExtraCostPercent": 100,
+        "requireSameSafetyPolicy": true
+      }
+    },
+    "models": [],
+    "messages": [
+      {
+        "key": "recovery.tool_waiting",
+        "channel": "common",
+        "locale": "en-US",
+        "text": "I’m still here. That’s taking a little longer than expected.",
+        "allowedVariables": [],
+        "maxCharacters": 400,
+        "status": "published",
+        "version": 1
+      },
+      {
+        "key": "recovery.tool_retry",
+        "channel": "common",
+        "locale": "en-US",
+        "text": "I’m still with you. I’m going to try that again.",
+        "allowedVariables": [],
+        "maxCharacters": 400,
+        "status": "published",
+        "version": 1
+      },
+      {
+        "key": "recovery.tool_unavailable",
+        "channel": "common",
+        "locale": "en-US",
+        "text": "I’m having trouble reaching that service. I can keep helping or connect you with a specialist.",
+        "allowedVariables": [],
+        "maxCharacters": 400,
+        "status": "published",
+        "version": 1
+      },
+      {
+        "key": "recovery.model_unavailable",
+        "channel": "common",
+        "locale": "en-US",
+        "text": "I’m still here. I’m having a brief issue processing that.",
+        "allowedVariables": [],
+        "maxCharacters": 400,
+        "status": "published",
+        "version": 1
+      },
+      {
+        "key": "recovery.handoff_failed",
+        "channel": "common",
+        "locale": "en-US",
+        "text": "I’m still here. I couldn’t reach the next specialist, so I’ll continue with you.",
+        "allowedVariables": [],
+        "maxCharacters": 400,
+        "status": "published",
+        "version": 1
+      },
+      {
+        "key": "recovery.validation_timeout",
+        "channel": "common",
+        "locale": "en-US",
+        "text": "I’m having trouble confirming that. I’m going to try once more.",
+        "allowedVariables": [],
+        "maxCharacters": 400,
+        "status": "published",
+        "version": 1
+      },
+      {
+        "key": "recovery.validation_no_match",
+        "channel": "common",
+        "locale": "en-US",
+        "text": "I couldn’t confirm that. Could you provide it another way?",
+        "allowedVariables": [],
+        "maxCharacters": 400,
+        "status": "published",
+        "version": 1
+      },
+      {
+        "key": "recovery.reconnect",
+        "channel": "common",
+        "locale": "en-US",
+        "text": "The connection paused briefly, but I’m still here.",
+        "allowedVariables": [],
+        "maxCharacters": 400,
+        "status": "published",
+        "version": 1
+      },
+      {
+        "key": "recovery.transfer_offer",
+        "channel": "common",
+        "locale": "en-US",
+        "text": "I’m having trouble completing this automatically. Would you like me to connect you with a specialist?",
+        "allowedVariables": [],
+        "maxCharacters": 400,
+        "status": "published",
+        "version": 1
+      },
+      {
+        "key": "recovery.transfer_failed",
+        "channel": "common",
+        "locale": "en-US",
+        "text": "I couldn’t complete the transfer. I’m still here and can try again or continue with you.",
+        "allowedVariables": [],
+        "maxCharacters": 400,
+        "status": "published",
+        "version": 1
+      },
+      {
+        "key": "recovery.idle_check",
+        "channel": "common",
+        "locale": "en-US",
+        "text": "I’m still here. Would you like to continue?",
+        "allowedVariables": [],
+        "maxCharacters": 400,
+        "status": "published",
+        "version": 1
+      },
+      {
+        "key": "recovery.call_ending",
+        "channel": "common",
+        "locale": "en-US",
+        "text": "I’m sorry, I can’t complete this right now.",
+        "allowedVariables": [],
+        "maxCharacters": 400,
+        "status": "published",
+        "version": 1
+      },
+      {
+        "key": "recovery.side_effect_checking",
+        "channel": "common",
+        "locale": "en-US",
+        "text": "I’m checking whether that request went through before we try again.",
+        "allowedVariables": [],
+        "maxCharacters": 400,
+        "status": "published",
+        "version": 1
+      },
+      {
+        "key": "voice.recovery.asr_confirm",
+        "channel": "voice",
+        "locale": "en-US",
+        "text": "I heard that. Is that right?",
+        "allowedVariables": [],
+        "maxCharacters": 400,
+        "status": "published",
+        "version": 1
+      },
+      {
+        "key": "voice.recovery.asr_repeat",
+        "channel": "voice",
+        "locale": "en-US",
+        "text": "I didn’t catch that. Could you repeat it?",
+        "allowedVariables": [],
+        "maxCharacters": 400,
+        "status": "published",
+        "version": 1
+      },
+      {
+        "key": "voice.recovery.barge_in",
+        "channel": "voice",
+        "locale": "en-US",
+        "text": "Go ahead. I’m listening.",
+        "allowedVariables": [],
+        "maxCharacters": 400,
+        "status": "published",
+        "version": 1
+      },
+      {
+        "key": "voice.recovery.tts_unavailable",
+        "channel": "voice",
+        "locale": "en-US",
+        "text": "I’m having trouble speaking right now. I’m still here.",
+        "allowedVariables": [],
+        "maxCharacters": 400,
+        "status": "published",
+        "version": 1
+      },
+      {
+        "key": "voice.recovery.voice_reconnect",
+        "channel": "voice",
+        "locale": "en-US",
+        "text": "The connection paused briefly, but I’m still here.",
+        "allowedVariables": [],
+        "maxCharacters": 400,
+        "status": "published",
+        "version": 1
+      },
+      {
+        "key": "voice.recovery.voice_idle_check",
+        "channel": "voice",
+        "locale": "en-US",
+        "text": "I’m still here. Would you like to continue?",
+        "allowedVariables": [],
+        "maxCharacters": 400,
+        "status": "published",
+        "version": 1
+      }
+    ]
+  },
+  "filler": {
+    "enabled": false,
+    "staticEnabled": true,
+    "chatEnabled": true,
+    "voiceEnabled": true,
+    "chatDelayMs": 1200,
+    "voiceDelayMs": 500,
+    "followUpGapMs": 1200,
+    "pipelineAnswerGapMs": 0,
+    "nativeTurnDelayMs": 500,
+    "cooldownMs": 3000,
+    "maxPerTurn": 5,
+    "pendingToolMaxStatusNudges": 3,
+    "pendingToolContextualFillerDeadlineMs": 500,
+    "conversationHistoryCount": 0,
+    "previousFillerCount": 0,
+    "includeInConversationHistory": false,
+    "maxOutputTokens": 30,
+    "promptOverrideMaxOutputTokens": 200,
+    "piggybackEnabled": true,
+    "pipelineGenerationEnabled": false,
+    "agentContextMode": "none",
+    "modelSource": "system"
+  },
+  "voice_latency": {
+    "profile": "customer_service_voice_low_latency_v1",
+    "profileVersion": 1,
+    "source": "voice_channel_enabled"
+  },
+  "activityVisibility": {
+    "version": 1,
+    "defaults": {
+      "fillers": "on",
+      "thoughtSummaries": "off",
+      "actionProgress": "on",
+      "systemNotices": "on",
+      "debugDetails": "off"
+    },
+    "categories": {
+      "fillers": {
+        "enabled": true,
+        "useExistingFillerConfig": true
+      },
+      "thoughtSummaries": {
+        "includeModelSummaries": false,
+        "includeReasonFallback": false,
+        "maxChars": 240
+      },
+      "actionProgress": {
+        "enabled": true,
+        "memoryAndKnowledgeProgress": true,
+        "workflowSteps": true,
+        "toolStart": true,
+        "toolRetry": true,
+        "decisions": false,
+        "toolPreview": "off"
+      },
+      "systemNotices": {
+        "enabled": true,
+        "authRequired": true,
+        "approvalRequired": true,
+        "waitingForInput": true
+      },
+      "debugDetails": {
+        "enabled": false,
+        "mode": "off",
+        "allowRedactedToolInputs": false,
+        "allowRedactedToolOutputs": false
+      }
+    },
+    "channels": {
+      "msteams": {
+        "fillers": "on",
+        "thoughtSummaries": "on"
+      }
+    },
+    "privacy": {
+      "exposeToolNames": false,
+      "exposeAgentNames": false,
+      "exposeWorkflowNames": false,
+      "exposeRawPreviews": false,
+      "redactSecrets": true,
+      "maxTextChars": 240
+    }
+  },
+  "voice": {
+    "sttVocabulary": [],
+    "sttMinConfidence": 0,
+    "streamingSayEnabled": false
+  },
+  "voiceNoInput": {
+    "enabled": false,
+    "mode": "static",
+    "timeoutMs": 5000,
+    "relaxedIntervalMs": 15000,
+    "maxRetries": 3,
+    "onExhausted": "hangup",
+    "order": "sequence",
+    "playStyle": "looped"
+  },
+  "analytics": {
+    "dimensions": [],
+    "outputItems": []
+  },
+  "orchestrationContract": {
+    "mode": "v2_shadow",
+    "origin": "import",
+    "detectedFrom": "export_manifest",
+    "sourceExportContract": "unknown"
+  }
+}

@@ -1,0 +1,44 @@
+[
+  {
+    "key": "QD_API_BASE_URL",
+    "description": null,
+    "isSecret": false,
+    "environment": "dev",
+    "value": "https://6aca73ee3115bcc95820d8c6.mockapi.io"
+  },
+  {
+    "key": "TODAY_OVERRIDE",
+    "description": null,
+    "isSecret": false,
+    "environment": "dev",
+    "value": "2026-10-11"
+  },
+  {
+    "key": "TRANSFER_MODE",
+    "description": null,
+    "isSecret": false,
+    "environment": "dev",
+    "value": "simulate"
+  },
+  {
+    "key": "QD_API_BASE_URL",
+    "description": null,
+    "isSecret": false,
+    "environment": "global",
+    "value": "https://6aca73ee3115bcc95820d8c6.mockapi.io"
+  },
+  {
+    "key": "TODAY_OVERRIDE",
+    "description": null,
+    "isSecret": false,
+    "environment": "global",
+    "value": "2026-10-11"
+  },
+  {
+    "key": "TRANSFER_MODE",
+    "description": null,
+    "isSecret": false,
+    "environment": "global",
+    "value": "simulate"
+  }
+]

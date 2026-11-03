@@ -1,0 +1,12 @@
+{
+  "stableId": "01a148a8-92cf-7975-a009-1dba7d337b30",
+  "name": "qd3_wf_yes_no",
+  "slug": "qd3-wf-yes-no",
+  "type": "cx_automation",
+  "description": "Records the caller's answer to the open yes or no question. Returns status only.",
+  "entryAgent": null,
+  "slaMinutes": null,
+  "escalationRules": [],
+  "notificationRules": [],
+  "_exportedId": "01a17931-d87a-73b1-ae1d-a40016b3dda6"
+}

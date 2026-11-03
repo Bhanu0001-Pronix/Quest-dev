@@ -1,0 +1,12 @@
+{
+  "stableId": "01a14b7d-af94-751b-84a9-ce20aba01b46",
+  "name": "qd4_wf_patient",
+  "slug": "qd4-wf-patient",
+  "type": "cx_automation",
+  "description": "v4: the one patient-phase tool. Parses name and date of birth, looks the patient up, verifies identity and scopes the results in one call; held state, raw words, account and policy are bound at runtime. Returns one status plus say and ask.",
+  "entryAgent": null,
+  "slaMinutes": null,
+  "escalationRules": [],
+  "notificationRules": [],
+  "_exportedId": "01a17931-d87a-774a-9417-ee5a17f036aa"
+}

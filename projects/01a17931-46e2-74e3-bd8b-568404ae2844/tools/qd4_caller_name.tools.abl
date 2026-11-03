@@ -1,0 +1,8 @@
+TOOLS:
+  qd4_caller_name(callerName: string) -> object
+    description: "Records the caller's own first and last name for the call record. Returns status only."
+    type: workflow
+    params:
+      callerName:
+        description: "The caller's first and last name as said."
+    workflow_id: "01a17931-d87a-70e7-870d-df1fa01c58b5"

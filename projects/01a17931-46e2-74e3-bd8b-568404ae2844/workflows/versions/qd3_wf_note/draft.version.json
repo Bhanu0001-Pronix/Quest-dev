@@ -1,0 +1,100 @@
+{
+  "version": "draft",
+  "state": "active",
+  "environment": null,
+  "source_hash": "beb5bc3ddc7fa3a8b0517536789a08a1f917c096575993c3fb5a508dad7ab936",
+  "changelog": null,
+  "triggers": [
+    {
+      "_exportedId": "01a17931-d88b-7fab-b698-a80c892b8641",
+      "triggerName": "webhook",
+      "type": "webhook",
+      "config": {},
+      "environment": null
+    }
+  ],
+  "published_at": null,
+  "definition": {
+    "nodes": [
+      {
+        "id": "start-node",
+        "nodeType": "start",
+        "name": "Start",
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "config": {
+          "inputVariables": [
+            {
+              "name": "choice",
+              "type": "string",
+              "required": true,
+              "description": "The choice or request in a few words, as instructed: an offered test name or date, a channel, or one of agent, bye, hold, why, repeat, other, none, another, done, or also followed by a second request."
+            }
+          ]
+        }
+      },
+      {
+        "id": "echo",
+        "nodeType": "function",
+        "name": "echo",
+        "position": {
+          "x": 300,
+          "y": 0
+        },
+        "config": {
+          "language": "javascript",
+          "mode": "inline",
+          "code": "const input = (context.steps && context.steps.start && context.steps.start.output) || (context.trigger && context.trigger.payload) || {};\ncontext.qd_result = { status: 'OK', choice: String(input.choice == null ? '' : input.choice).trim() };"
+        }
+      },
+      {
+        "id": "end-node",
+        "nodeType": "end",
+        "name": "end",
+        "position": {
+          "x": 600,
+          "y": 0
+        },
+        "config": {
+          "outputMapping": {
+            "result": "{{context.qd_result}}"
+          }
+        }
+      }
+    ],
+    "edges": [
+      {
+        "id": "e1",
+        "source": "start-node",
+        "sourceHandle": "on_success",
+        "target": "echo"
+      },
+      {
+        "id": "e2",
+        "source": "echo",
+        "sourceHandle": "on_success",
+        "target": "end-node"
+      }
+    ],
+    "steps": [],
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "choice": {
+          "type": "string",
+          "description": "The choice or request in a few words, as instructed: an offered test name or date, a channel, or one of agent, bye, hold, why, repeat, other, none, another, done, or also followed by a second request."
+        }
+      },
+      "required": [
+        "choice"
+      ]
+    },
+    "outputSchema": null,
+    "entryAgent": null,
+    "slaMinutes": null,
+    "escalationRules": [],
+    "notificationRules": []
+  }
+}
